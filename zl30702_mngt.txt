@@ -1,0 +1,72 @@
+; Device Id            : ZL30702
+;======================================================================
+
+; NOTE:
+; This is an incremental configuration script.
+; For proper device operation, all register write and wait commands in
+; this file must be performed in the sequence listed.
+
+;======================================================================
+
+; Configuration script commands
+
+; 1.  Register Write Command:
+;        X , <register_address> , <data_bytes>
+;        Both <register_address> and <data_bytes> are in hexadecimal
+;        format and must have the "0x" prefix.
+
+; 2.  Wait Command:
+;        W , <time_microseconds>
+;        The wait time is specified in microseconds.
+
+;======================================================================
+
+; The following lines are used only for the evaluation board GUI configuration:
+
+; Master Clock Frequency Without Offset MHz = 20
+; PhaseShift synth1:  Div2=12
+
+;======================================================================
+; Register Configuration Start
+
+
+X , 0x0582  , 0x00                        ;  ref_ctrl                    
+X , 0x0583  , 0x01                        ;  ref_ctrl                    
+X , 0x0584  , 0x02                        ;  ref_semaphore               
+W , 20000 
+X , 0x0585  , 0x03                        ;  ref0_freq_base              
+X , 0x0586  , 0xE8                        ;  ref0_freq_base              
+X , 0x0587  , 0x00                        ;  ref0_freq_mult              
+X , 0x0588  , 0x01                        ;  ref0_freq_mult              
+X , 0x0589  , 0x00                        ;  ref0_ratio_m                
+X , 0x058A  , 0x01                        ;  ref0_ratio_m                
+X , 0x058B  , 0x03                        ;  ref0_ratio_n                
+X , 0x058C  , 0xE8                        ;  ref0_ratio_n                
+X , 0x058D  , 0x01                        ;  ref0_config                 
+X , 0x058F  , 0x05                        ;  ref0_scm                    
+X , 0x0590  , 0x05                        ;  ref0_cfm                    
+X , 0x0591  , 0x21                        ;  ref0_gst                    
+X , 0x0592  , 0x00                        ;  ref0_pfm_ctrl               
+X , 0x0593  , 0x32                        ;  ref0_pfm_disqualify         
+X , 0x0594  , 0xB4                        ;  ref0_pfm_disqualify         
+X , 0x0595  , 0x27                        ;  ref0_pfm_qualify            
+X , 0x0596  , 0x24                        ;  ref0_pfm_qualify            
+X , 0x0597  , 0x00                        ;  ref0_pfm_period             
+X , 0x0598  , 0x00                        ;  ref0_pfm_period             
+X , 0x0599  , 0x28                        ;  ref0_pfm_filter_limit       
+X , 0x059A  , 0x1B                        ;  ref0_phase_mem              
+X , 0x059B  , 0x02                        ;  ref0_sync                   
+X , 0x059C  , 0x00                        ;  ref0_sync_misc              
+X , 0x059D  , 0x00                        ;  ref0_sync_offset_comp       
+X , 0x0584  , 0x01                        ;  ref_semaphore               
+W , 20000 
+         
+W , 1000000 
+X , 0x0506  , 0x00                        ;  phase_step_max              
+X , 0x0501  , 0x00                        ;  phase_step_ctrl             
+X , 0x0510  , 0x00                        ;  synth_step_div_mask_1_0     
+X , 0x0511  , 0x00                        ;  synth_step_div_mask_3_2     
+
+; Register Configuration End
+
+;======================================================================
