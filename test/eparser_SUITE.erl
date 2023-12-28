@@ -141,8 +141,8 @@ simple_erlang_like(Config) ->
 device_simple_parser(Config) ->
     Filename = filename:join(?config(data_dir, Config), "devices.cfg"),
     Expect =
-        {boards, [{"num_boards", "2"}, {board, "b1"}, {board, "b2"}], [
-            {"b1", [{num_devices, "2"}], [
+        {boards, [{"num_boards", "2"}, {board, "b1"}, {board, "b2"}, {board, "b2"}], [
+            {"b1", [{"e2k", "x1"}, {num_devices, "2"}], [
                 {device, "fpgajic", [
                     {alias, "a"},
                     {model, "m"},
@@ -174,7 +174,39 @@ device_simple_parser(Config) ->
                     {estimated_time, "10"}
                 ]}
             ]},
-            {"b2", [{num_devices, "2"}], [
+            {"b2", [{"e2k", "xx1"}, {num_devices, "2"}], [
+                {device, "cpld", [
+                    {model, "a"},
+                    {alias, undefined},
+                    {version, "4"},
+                    {file, "/tmp/v04.jed"},
+                    {md5, "ac4b38fc63716157bfdd6f14680df55d"},
+                    {devport, "/dev/i2c-34"},
+                    {adapter, "34"},
+                    {activecard, "1"},
+                    {enabled, "1"},
+                    {checkversion, "1"},
+                    {dependencies, undefined},
+                    {restart_type, "system-reboot"},
+                    {estimated_time, "120"}
+                ]},
+                {device, "55", [
+                    {model, "b"},
+                    {alias, undefined},
+                    {version, "1.0"},
+                    {file, "/tmp/1_0.hex"},
+                    {md5, "418b571772a384b694e56a42dd2ed0f1"},
+                    {devport, "/dev/i2c-34"},
+                    {adapter, "34"},
+                    {activecard, "1"},
+                    {enabled, "1"},
+                    {checkversion, "1"},
+                    {dependencies, undefined},
+                    {restart_type, "system-reboot"},
+                    {estimated_time, "120"}
+                ]}
+            ]},
+            {"b2", [{"e2k", "xxb1*"}, {num_devices, "2"}], [
                 {device, "cpld", [
                     {model, "a"},
                     {alias, undefined},

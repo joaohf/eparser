@@ -5,7 +5,7 @@ BOARD          = \[[a-zA-Z0-9]*\]
 KEY            = [a-z\_]*[0-9]
 EQUAL          = =
 VALUE          = [A-Za-z0-9\_/\-\.\*]*
-KEY_OR_VALUE  = [A-Za-z0-9\_/\-\.]*
+KEY_OR_VALUE  = [A-Za-z0-9\_/\-\.\*]*
 WS             = [\s\t]
 LB             = \n|\r\n|\r
 

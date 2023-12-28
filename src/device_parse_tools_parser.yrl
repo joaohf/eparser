@@ -29,8 +29,8 @@ board_values -> board_info num_boardsx : {boards, '$2', []}.
 board_values -> board_info num_boardsx values : {boards, '$2' ++ '$3', []}.
 board_values -> board_info num_boardsx values board_valuesx : {boards, '$2' ++ '$3', '$4'}.
 
-board_valuesx -> board e2kx num_devicesx devicex board_valuesx : [{unwrap1('$1'), [unwrap1('$2'), '$3'], '$4'} | '$5'].
-board_valuesx -> board e2kx num_devicesx devicex : [{unwrap1('$1'), [unwrap1('$2'), '$3'], '$4'}].
+board_valuesx -> board e2kx num_devicesx devicex board_valuesx : [{unwrap('$1'), [unwrap1('$2'), '$3'], '$4'} | '$5'].
+board_valuesx -> board e2kx num_devicesx devicex : [{unwrap('$1'), [unwrap1('$2'), '$3'], '$4'}].
 
 num_devicesx -> num_devices equal value : {unwrap('$1'), '$3'}.
 e2kx -> e2k equal value : {unwrap('$1'), '$3'}.
@@ -50,8 +50,6 @@ Erlang code.
 device({_,_,V}) -> V.
 
 unwrap1(V) -> V.
-
-unwrap({_,V}) -> V;
 
 unwrap({_,_,V}) -> V.
 
