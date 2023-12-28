@@ -1,7 +1,5 @@
 -module(device_adhoc).
 
--include("include/device.hrl").
-
 -export([parse_file/1]).
 
 -spec parse_file(file:name_all()) -> Reason when

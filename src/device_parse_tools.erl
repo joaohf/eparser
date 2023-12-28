@@ -1,7 +1,5 @@
 -module(device_parse_tools).
 
--include("include/device.hrl").
-
 -export([parse_file/1]).
 
 -type device_property() ::

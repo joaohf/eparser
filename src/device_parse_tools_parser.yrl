@@ -4,6 +4,7 @@ board_values
 board_valuesx
 num_boardsx
 num_devicesx
+e2kx
 devicex
 key
 values
@@ -12,6 +13,7 @@ value.
 Terminals
 board
 num_boards
+e2k
 num_devices
 device
 board_info
@@ -27,10 +29,11 @@ board_values -> board_info num_boardsx : {boards, '$2', []}.
 board_values -> board_info num_boardsx values : {boards, '$2' ++ '$3', []}.
 board_values -> board_info num_boardsx values board_valuesx : {boards, '$2' ++ '$3', '$4'}.
 
-board_valuesx -> board num_devicesx devicex board_valuesx : [{unwrap('$1'), '$2', '$3'} | '$4'].
-board_valuesx -> board num_devicesx devicex : [{unwrap('$1'), '$2', '$3'}].
+board_valuesx -> board e2kx num_devicesx devicex board_valuesx : [{unwrap1('$1'), [unwrap1('$2'), '$3'], '$4'} | '$5'].
+board_valuesx -> board e2kx num_devicesx devicex : [{unwrap1('$1'), [unwrap1('$2'), '$3'], '$4'}].
 
-num_devicesx -> num_devices equal value : [{unwrap('$1'), '$3'}].
+num_devicesx -> num_devices equal value : {unwrap('$1'), '$3'}.
+e2kx -> e2k equal value : {unwrap('$1'), '$3'}.
 num_boardsx -> num_boards equal value : [{unwrap('$1'), '$3'}].
 devicex -> device equal value values: [{device('$1'), '$3', '$4'}].
 devicex -> device equal value values devicex: [{device('$1'), '$3', '$4'} | '$5'].
@@ -45,6 +48,10 @@ value -> key_or_value : unwrap('$1').
 Erlang code.
 
 device({_,_,V}) -> V.
+
+unwrap1(V) -> V.
+
+unwrap({_,V}) -> V;
 
 unwrap({_,_,V}) -> V.
 

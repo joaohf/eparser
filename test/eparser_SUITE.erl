@@ -209,6 +209,8 @@ device_simple_parser(Config) ->
         ]},
     Result = device_parse_tools:parse_file(Filename),
 
+    ct:pal("xxxx ~p", [Result]),
+
     ?assertMatch(Expect, Result),
 
     ok.
